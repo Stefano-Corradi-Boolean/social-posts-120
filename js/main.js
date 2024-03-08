@@ -1,60 +1,9 @@
-const posts = [
-    {
-        "id": 14324,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/300?image=171",
-        "author": {
-            "name": "Phil Mangione",
-            "image": "https://unsplash.it/300/300?image=15"
-        },
-        "likes": 80,
-        "created": "2021-06-25"
-    },
-    {
-        "id": 23432,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=112",
-        "author": {
-            "name": "Sofia Perlari",
-            "image": "https://unsplash.it/300/300?image=10"
-        },
-        "likes": 120,
-        "created": "2021-09-03"
-    },
-    {
-        "id": 3433,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=234",
-        "author": {
-            "name": "Chiara Passaro",
-            "image": "https://unsplash.it/300/300?image=20"
-        },
-        "likes": 78,
-        "created": "2021-05-15"
-    },
-    {
-        "id": 3454,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=24",
-        "author": {
-            "name": "Luca Formicola",
-            "image": null
-        },
-        "likes": 56,
-        "created": "2021-04-03"
-    },
-    {
-        "id": 54565,
-        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "media": "https://unsplash.it/600/400?image=534",
-        "author": {
-            "name": "Alessandro Sainato",
-            "image": "https://unsplash.it/300/300?image=29"
-        },
-        "likes": 95,
-        "created": "2021-03-05"
-    }
-];
+// importo l'array dei post
+import posts from "./db.js";
+// importo le funzioni che mi servono
+import { getProfileImageTag, getProfileInitialsTag , formatDate , alfabeto} from './utils.js'
+
+console.log(alfabeto);
 
 // id dei post che mi piacciono
 const userLiked = [3454, 23432, 14324]
@@ -158,34 +107,3 @@ function isLiked(id){
     return userLiked.includes(id);
 }
 
-function getProfileImageTag(author){
-    const {name, image} = author;
-    return `<img class="profile-pic" src="${image}" alt="${name}"> `
-}
-
-function getProfileInitialsTag(author){
-    const {name, image} = author;
-    /*
-        1. trasformo il name in una array usando come separatore lo spazion split (' ')
-        2. con un ciclo creo un nuovo array con solo le iniziali
-        3. concateno il nuovo array e lo restituisco
-    
-    */
-   const letters = name.split(' ').map(nameSplit => nameSplit[0])
-    console.log(letters);
-    return `<div class="profile-pic-default">
-                <span>${letters.join('')}</span>
-            </div>`
-}
-
-function formatDate(dateStr){
-    /*
-        1. trasformo la stringa in un array usando il separatore -  -> split('-')
-        2. rigiro l'array                                           -> reverse()
-        3. creo una stringa dal nuovo array concatenando con /      -> join('/)
-        4. restituisco la nuova stringa
-    
-    */
-
-        return dateStr.split('-').reverse().join('/');
-}
